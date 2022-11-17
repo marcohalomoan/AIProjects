@@ -5,7 +5,7 @@ Removing NaN values
 Checking and removing stopwords obtained by importing nltk stopwords file
 Finding and removing the words ends in "n't" or is the word "not" or "no" or "never" using Regular Expression
 Removing digits from 0-9 using Regular Expression for words that are not found in stopwords
-After both training and test data are scrubbed, we vectorize them using CountVectorizer() (Appendix 1) and TfidfVectorizer() (Appendix 2) separately, resulting into 2 vectorized training data and 2 vectorized test data. To ensure the labels are formatted according to model requirements, we used LabelEncoder() (Appendix 3) to reformat them.
+After both training and test data are scrubbed, we vectorize them using CountVectorizer() and TfidfVectorizer() separately, resulting into 2 vectorized training data and 2 vectorized test data. To ensure the labels are formatted according to model requirements, we used LabelEncoder() to reformat them.
 
 There is also Word Embeddings using Word2Vec that is more context sensitive and can extract more insight of the data. However, implementing the word embedding model itself requires another neural network which need to be trained and parameterized. Due to time constraint, we considered CountVectorizer and TF-IDF Vectorizer sufficient to fulfill our needs of vectorizing the reviews data.
 
@@ -27,5 +27,5 @@ Precision, percentage of samples labeled as positive are actually such: 0.9230
 Recall, percentage of positive samples are labeled as such: 12351265=0.9762
 Lastly, the combination of Precision and Recall, F measure: F=2 x Precision x RecallPrecision + Recall=0.9489 
 
-The learning rate chosen was 0.00003, the other optimizer parameters are default values of TensorFlow’s Adam. (See Appendix 3). Initially, we tried Adam’s default learning rate (0.0001) but it overfits easily since the vectorized data is rather too simple for our RNN with a hidden layer of 100 neurons model. We slowly lowered it down and found that 0.00003 was the most optimal rate.
-We tried 2 different RNNs, each for CountVectorizer data and TF-IDF vectorized data. The number of epochs for CountVectorizer data is 30 as when we examined the epoch vs loss graph, the validation and training curves start to diverge after 30. For TF-IDF vectorizer, the curves start to diverge after 60 epochs, thus we choose 60 epochs as optimal parameter. We also implemented L1 and L2 regularization (Appendix 5) with values of L1=10-5 and L2=10-4 to prevent overfitting.
+The learning rate chosen was 0.00003, the other optimizer parameters are default values of TensorFlow’s Adam. Initially, we tried Adam’s default learning rate (0.0001) but it overfits easily since the vectorized data is rather too simple for our RNN with a hidden layer of 100 neurons model. We slowly lowered it down and found that 0.00003 was the most optimal rate.
+We tried 2 different RNNs, each for CountVectorizer data and TF-IDF vectorized data. The number of epochs for CountVectorizer data is 30 as when we examined the epoch vs loss graph, the validation and training curves start to diverge after 30. For TF-IDF vectorizer, the curves start to diverge after 60 epochs, thus we choose 60 epochs as optimal parameter. We also implemented L1 and L2 regularizationq  with values of L1=10-5 and L2=10-4 to prevent overfitting.
