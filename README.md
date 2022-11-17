@@ -22,10 +22,10 @@ The hyperparameters set are:
 After training the model, we evaluate it with the test data and obtained 91.02% accuracy. Further evaluation gave us the confusion matrix in Figure 3. From it, we can derive the following evaluation metrics:
 - Specificity, measure of how well classifier can recognize the negative samples: 0.5231 
 - Sensitivity, measure of how well classifier can recognize the positive samples: 0.9762
-Accuracy, as a function of sensitivity and specificity: 0.9102
-Precision, percentage of samples labeled as positive are actually such: 0.9230
-Recall, percentage of positive samples are labeled as such: 12351265=0.9762
-Lastly, the combination of Precision and Recall, F measure: F=2 x Precision x RecallPrecision + Recall=0.9489 
+- Accuracy, as a function of sensitivity and specificity: 0.9102
+- Precision, percentage of samples labeled as positive are actually such: 0.9230
+- Recall, percentage of positive samples are labeled as such: 12351265=0.9762
+- Lastly, the combination of Precision and Recall, F measure: F=2 x Precision x RecallPrecision + Recall=0.9489 
 
 The learning rate chosen was 0.00003, the other optimizer parameters are default values of TensorFlow’s Adam. Initially, we tried Adam’s default learning rate (0.0001) but it overfits easily since the vectorized data is rather too simple for our RNN with a hidden layer of 100 neurons model. We slowly lowered it down and found that 0.00003 was the most optimal rate.
 We tried 2 different RNNs, each for CountVectorizer data and TF-IDF vectorized data. The number of epochs for CountVectorizer data is 30 as when we examined the epoch vs loss graph, the validation and training curves start to diverge after 30. For TF-IDF vectorizer, the curves start to diverge after 60 epochs, thus we choose 60 epochs as optimal parameter. We also implemented L1 and L2 regularizationq  with values of L1=10-5 and L2=10-4 to prevent overfitting.
