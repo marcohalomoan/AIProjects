@@ -1,4 +1,4 @@
-# AIProjects
+# SENTIMENT ANALYSIS WITH NATURAL LANGUAGE PROCESSING
 
 We first split train.json dataset into training and test data. The splitting was done randomly with 80% of the dataset used as training and remaining 20% as test data. Then, each of them are preprocessed using using a data cleaning function that we implemented. The function includes: 
 Removing NaN values
